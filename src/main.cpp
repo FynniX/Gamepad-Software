@@ -58,7 +58,9 @@ void loop()
     TransferMessage message = SerialCommunication::receive();
 
     if (isMaster && message.id != -1)
-      message.enabled ? Gamepad.press(message.id) : Gamepad.release(message.id);
+      message.enabled
+          ? Gamepad.press(message.id)
+          : Gamepad.release(message.id);
   }
 
   if (isMaster)

@@ -28,8 +28,8 @@ TransferMessage *Encoder::updateAll()
     for (int i = 0; i < encoderAmount; i++)
     {
         TransferMessage *updates = Encoder::encoderList[i].update();
-        messages[(i * 2) - 2] = *updates;
-        messages[(i * 2) - 1] = *(updates + 1);
+        messages[((i + 1) * 2) - 2] = *updates;
+        messages[((i + 1) * 2) - 1] = *(updates + 1);
     }
 
     return &messages[0];
@@ -44,8 +44,6 @@ void Encoder::setup(int id1, int id2, int pin1, int pin2)
 
     pinMode(this->pins[0], INPUT_PULLUP);
     pinMode(this->pins[1], INPUT_PULLUP);
-    this->states[0] = digitalRead(this->pins[0]);
-    this->states[1] = digitalRead(this->pins[1]);
 }
 
 void Encoder::setup(int id1, int id2, int pin1, int pin2, int debounce)
@@ -58,8 +56,6 @@ void Encoder::setup(int id1, int id2, int pin1, int pin2, int debounce)
 
     pinMode(this->pins[0], INPUT_PULLUP);
     pinMode(this->pins[1], INPUT_PULLUP);
-    this->states[0] = digitalRead(this->pins[0]);
-    this->states[1] = digitalRead(this->pins[1]);
 }
 
 TransferMessage *Encoder::update()

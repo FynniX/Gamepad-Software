@@ -51,7 +51,6 @@ void Button::setup(int id, int pin)
     this->pin = pin;
 
     pinMode(this->pin, INPUT_PULLUP);
-    this->state = digitalRead(this->pin);
 }
 
 void Button::setup(int id, int pin, int debounce)
@@ -61,7 +60,6 @@ void Button::setup(int id, int pin, int debounce)
     this->debounce = debounce;
 
     pinMode(this->pin, INPUT_PULLUP);
-    this->state = digitalRead(this->pin);
 }
 
 TransferMessage Button::update()
